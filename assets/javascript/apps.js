@@ -66,8 +66,12 @@ var user = {
         Image: userImage
       });
     });
+    showUserName(userName);
   }
 
+  function showUserName(userName) {
+    $(".showUserName").html("Hi " + userName);
+  }
 
 
 
