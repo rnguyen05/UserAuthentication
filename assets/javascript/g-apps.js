@@ -37,8 +37,10 @@ var userImage = "";
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
+
     userName = user.displayName;
     showUserName(userName);
+  
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -65,7 +67,8 @@ var userImage = "";
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    
+
+    console.log(user);
     userName = user.displayName;
     showUserName(userName);
 
@@ -93,7 +96,7 @@ var userImage = "";
 
 
 
-  //SignOut ++++NOT WORKING YET++++
+  //GOOGLE SignOut ++++NOT WORKING YET++++
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
