@@ -8,10 +8,19 @@ var config = {
   };
   firebase.initializeApp(config);
 
+//Global variables
+var user = {
+  Name: "",
+  Email: "",
+  Image: ""
+}
+
+
 
 /************* Google Authentication ****************/
 
   var provider = new firebase.auth.GoogleAuthProvider();
+  var usersRef = firebase.database().ref("/users");
 
   firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -39,9 +48,34 @@ var config = {
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+    var userName = profile.getName();
+    var userEmail = profile.getEmail();
+    var userImage = profile.getImageUrl();
+    //Invoke addUserInfo function
+    addUserInfo(userName, userEmail, userImage);
   }
 
-  //SignOut
+  //Add User Info to firebase Database
+  function addUserInfo (userName, userEmail, userImage) {
+    usersRef.on("child_added", function (snapshot) {
+      var newUsersRef = snapshot.val();
+      newUsersRef.update({
+        Name: userName,
+        Email: userEmail,
+        Image: userImage
+      });
+    });
+  }
+
+
+
+
+
+
+
+
+  //SignOut ++++NOT WORKING YET++++
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
