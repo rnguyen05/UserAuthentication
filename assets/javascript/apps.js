@@ -72,6 +72,7 @@ var userImage = "";
     console.log(userName, userEmail, userImage);
     usersRef.on("child_added", function (snapshot) {
       var newUsersRef = snapshot.val();
+      newUsersRef.set(user);
       newUsersRef.update({
         Name: userName,
         Email: userEmail,
