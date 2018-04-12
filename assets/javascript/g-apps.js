@@ -28,22 +28,13 @@ var userImage = "";
 /************* Google Authentication ****************/
 
   var provider = new firebase.auth.GoogleAuthProvider();
-  var usersRef = firebase.database().ref("/users");
+  
 
   firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    
-    console.log(user);
-    userName = user.displayName;
-    userEmail = user.email;
-    userImage = user.photoURL;
-    //Invoke addUserInfo function
-    addUserInfo(userName, userEmail, userImage);
-
-
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -54,18 +45,27 @@ var userImage = "";
     var credential = error.credential;
     // ...
   });
-
-
   //Get profile info
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-    
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present. 
   }
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+    } else {
+      // No user is signed in.
+    }
+  });
+
+
+
+
+
 
   //Add User Info to firebase Database
   function addUserInfo (userName, userEmail, userImage) {
