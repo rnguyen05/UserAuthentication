@@ -25,12 +25,14 @@ var userImage = "";
 
 
 
-/************* Google Authentication ****************/
+/************* Authentication ****************/
 
-  var provider = new firebase.auth.GoogleAuthProvider();
-  
+  var gProvider = new firebase.auth.GoogleAuthProvider();
 
-  firebase.auth().signInWithPopup(provider).then(function(result) {
+  var fProvider = new firebase.auth.FacebookAuthProvider();
+
+  //Start Google Code Here
+  firebase.auth().signInWithPopup(gProvider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
     // The signed-in user info.
@@ -55,35 +57,32 @@ var userImage = "";
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present. 
   }
+  //End of Google Code 
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-    } else {
-      // No user is signed in.
-    }
+  //Start Facebook Code Here
+  firebase.auth().signInWithPopup(fProvider).then(function(result) {
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    
+    userName = user.displayName;
+    showUserName(userName);
+
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
   });
 
+  //End of Facebook Code
 
-
-
-
-
-  //Add User Info to firebase Database
-  function addUserInfo (userName, userEmail, userImage) {
-    console.log(userName, userEmail, userImage);
-    usersRef.on("child_added", function (snapshot) {
-      var newUsersRef = snapshot.val();
-      newUsersRef.set(user);
-      newUsersRef.update({
-        Name: userName,
-        Email: userEmail,
-        Image: userImage
-      });
-    });
-    showUserName(userName);
-  }
-
+  
   function showUserName(userName) {
     $(".showUserName").html("Hi " + userName);
   }
