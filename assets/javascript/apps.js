@@ -1,12 +1,16 @@
+
+
+// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyC2Y1M1nveiUvDZ3qhcL8lvAOTkyER_zlM",
-    authDomain: "userauthentication-d9c13.firebaseapp.com",
-    databaseURL: "https://userauthentication-d9c13.firebaseio.com",
-    projectId: "userauthentication-d9c13",
-    storageBucket: "userauthentication-d9c13.appspot.com",
-    messagingSenderId: "341465402406"
-  };
-  firebase.initializeApp(config);
+  apiKey: "AIzaSyC2Y1M1nveiUvDZ3qhcL8lvAOTkyER_zlM",
+  authDomain: "userauthentication-d9c13.firebaseapp.com",
+  databaseURL: "https://userauthentication-d9c13.firebaseio.com",
+  projectId: "userauthentication-d9c13",
+  storageBucket: "userauthentication-d9c13.appspot.com",
+  messagingSenderId: "341465402406"
+};
+firebase.initializeApp(config);
+
 
 //Global variables
 var user = {
@@ -14,6 +18,10 @@ var user = {
   Email: "",
   Image: ""
 }
+
+var userName = "";
+var userEmail = "";
+var userImage = "";
 
 
 
@@ -49,9 +57,9 @@ var user = {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-    var userName = profile.getName();
-    var userEmail = profile.getEmail();
-    var userImage = profile.getImageUrl();
+    userName = profile.getName();
+    userEmail = profile.getEmail();
+    userImage = profile.getImageUrl();
     //Invoke addUserInfo function
     addUserInfo(userName, userEmail, userImage);
   }
