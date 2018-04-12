@@ -70,7 +70,7 @@ var userImage = "";
   //Add User Info to firebase Database
   function addUserInfo (userName, userEmail, userImage) {
     console.log(userName, userEmail, userImage);
-    usersRef.on("child_added", function (snapshot) {
+    usersRef.on("value", function (snapshot) {
       var newUsersRef = snapshot.val();
       newUsersRef.update({
         Name: userName,
