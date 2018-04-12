@@ -37,6 +37,13 @@ var userImage = "";
     var user = result.user;
     
     console.log(user);
+    userName = user.displayName;
+    userEmail = user.email;
+    userImage = user.photoURL;
+    //Invoke addUserInfo function
+    addUserInfo(userName, userEmail, userImage);
+
+
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -57,11 +64,7 @@ var userImage = "";
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-    userName = profile.getName();
-    userEmail = profile.getEmail();
-    userImage = profile.getImageUrl();
-    //Invoke addUserInfo function
-    addUserInfo(userName, userEmail, userImage);
+    
   }
 
   //Add User Info to firebase Database
