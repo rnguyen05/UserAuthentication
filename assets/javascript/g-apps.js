@@ -35,6 +35,8 @@ var userImage = "";
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
+    userName = user.displayName;
+    showUserName(userName);
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
