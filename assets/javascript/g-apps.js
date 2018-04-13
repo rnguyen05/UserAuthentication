@@ -106,7 +106,7 @@ function statusChangeCallback(response) {
   // Full docs on the response object can be found in the documentation
   // for FB.getLoginStatus().
   console.log("response.status",response.status);
-  location.reload();
+  
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     testAPI();
@@ -146,6 +146,7 @@ function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function(response) {
     userName = response.name;
+    location.reload();
     showUserName(userName);
     // console.log('Successful login for: ' + response.name);
     // document.getElementById('status').innerHTML =
