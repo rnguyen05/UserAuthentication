@@ -110,9 +110,8 @@ function statusChangeCallback(response) {
     // Logged into your app and Facebook.
     testAPI();
     
-    console.log(response.name);
-    userName = response.name;
-    showUserName(userName);
+    
+    
   } else {
     // The person is not logged into your app or we are unable to tell.
     document.getElementById('status').innerHTML = 'Please log ' +
@@ -145,9 +144,11 @@ function checkLoginState() {
 function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function(response) {
-    console.log('Successful login for: ' + response.name);
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
+    userName = response.name;
+    showUserName(userName);
+    // console.log('Successful login for: ' + response.name);
+    // document.getElementById('status').innerHTML =
+    //   'Thanks for logging in, ' + response.name + '!';
   });
 }
 
