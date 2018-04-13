@@ -105,7 +105,7 @@ function statusChangeCallback(response) {
   // app know the current login status of the person.
   // Full docs on the response object can be found in the documentation
   // for FB.getLoginStatus().
-  console.log(response.status);
+  console.log("response.status",response.status);
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     testAPI();
