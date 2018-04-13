@@ -93,6 +93,7 @@ window.fbAsyncInit = function() {
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
+    windows.location.reload();
   });
 
 };
@@ -146,7 +147,7 @@ function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
   FB.api('/me', function(response) {
     userName = response.name;
-    location.reload();
+    
     showUserName(userName);
     // console.log('Successful login for: ' + response.name);
     // document.getElementById('status').innerHTML =
