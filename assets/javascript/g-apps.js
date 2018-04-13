@@ -106,17 +106,18 @@ function statusChangeCallback(response) {
   // Full docs on the response object can be found in the documentation
   // for FB.getLoginStatus().
   console.log("response.status",response.status);
+  location.reload();
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     testAPI();
     
-    
-    
-  } else {
-    // The person is not logged into your app or we are unable to tell.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this app.';
   }
+    
+  // } else {
+  //   // The person is not logged into your app or we are unable to tell.
+  //   document.getElementById('status').innerHTML = 'Please log ' +
+  //     'into this app.';
+  // }
 }
 
 // This function is called when someone finishes with the Login
