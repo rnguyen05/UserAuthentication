@@ -25,7 +25,6 @@
             <div class="jumbotron text-center"><h1>User Authentication</h1></div>
 
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            
             <!--End Google sign-in-->
             
             <!--Facebook Login-->
@@ -41,6 +40,26 @@
 
             <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> 
             <!--End Facebook Login-->
+
+            <!-- Login with username and password -->
+            <div>
+                <label for="username">User Name: </label>
+                <input type="text" id="username" >
+            </div>
+            <div>
+                    <label for="password">Password: </label>
+                <input type="password" id="password"> 
+            </div>
+            <div>
+                <input type="button" id="login" class="btn btn-action" value="Log In">
+                <input type="button" id="SignUp" class="btn btn-secondary" value="Sign Up">
+                <input type="button" id="LogOut"  class="btn btn-action hide"  value="Log Out">
+            </div>
+            <!-- End Login with username and password -->
+
+
+
+
             <div class="showUserName mt-3"></div>
     </div>
 
