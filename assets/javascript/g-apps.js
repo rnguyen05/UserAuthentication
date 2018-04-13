@@ -93,7 +93,7 @@ window.fbAsyncInit = function() {
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
-    windows.location.reload();
+    
   });
 
 };
