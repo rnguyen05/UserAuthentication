@@ -21,7 +21,7 @@
 <body>
     <!--Facebook Login-->
     <!-- <div id="fb-root"></div> -->
-    <script>(function(d, s, id) {
+    <!-- <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
@@ -29,7 +29,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     
-    <div id="status"></div>
+    <div id="status"></div> -->
 
     
     <!--End Facebook Login-->
@@ -39,6 +39,10 @@
             <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
             <div class="row">
                     <button id="googleBtn" class="major-provider btn _block _medium _google">Google</button>
+                    <fb:login-button scope="email,user_likes,user_photos"    
+                    onlogin='window.location.reload();'>Connect with Facebook</fb:login-button> 
+                    
+
                     <button id="facebookBtn" class="fb-login-button ml-5" ata-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false">Facebook</button>
                     <!-- <div class="fb-login-button" data-max-rows="1" data-size="large"  data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
             </div>
